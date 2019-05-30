@@ -9,13 +9,13 @@ import collections
 import random
 from datetime import datetime
 
-__author__ = "Joff Thyer"
-__copyright__ = "Copyright (c) 2019, Black Hills Information Security"
-__license__ = ""
-__version__ = "0.0.1"
-__maintainer__ = "Joff Thyer"
-__email__ = "joff@blackhillsinfosec.com"
-__status__ = "dev"
+__author__ = 'Joff Thyer'
+__copyright__ = 'Copyright (c) 2019'
+__license__ = 'MIT'
+__version__ = '0.0.1'
+__maintainer__ = 'Joff Thyer'
+__email__ = 'joff@blackhillsinfosec.com'
+__status__ = 'dev'
 
 
 class FrameStream():
