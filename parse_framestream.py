@@ -159,6 +159,7 @@ if __name__ == '__main__':
         help='Match specific source IP address'
     )
     args = parser.parse_args()
+
     FrameStream(
         args.filename, printdig=args.print,
         stats=args.stats, srcip=args.srcip, topn=args.topn
