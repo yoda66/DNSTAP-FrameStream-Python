@@ -143,8 +143,14 @@ class FrameStream():
 
 
 if __name__ == '__main__':
-    banner = "FrameStream() Class, Author: Joff Thyer (c) 2019"
-    parser = argparse.ArgumentParser(description=banner)
+    banner = '''\
+[*] --------------------------------------
+[*]  FrameStream Parser Class
+[*]  Author: Joff Thyer, (c) 2019
+[*]  Black Hills Information Security
+[*] --------------------------------------
+'''
+    parser = argparse.ArgumentParser()
     parser.add_argument('filename', help='DNSTAP Frame Stream Log')
     parser.add_argument(
         '-p', '--print', action='store_true',
