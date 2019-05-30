@@ -151,11 +151,15 @@ if __name__ == '__main__':
         default=False, help='Print out DNS Query Message'
     )
     parser.add_argument(
+        '--topn', default=10,
+        help='Top number of domains in stats'
+    )
+    parser.add_argument(
         '--srcip', default='',
         help='Match specific source IP address'
     )
     args = parser.parse_args()
     FrameStream(
         args.filename, printdig=args.print,
-        stats=args.stats, srcip=args.srcip
+        stats=args.stats, srcip=args.srcip, topn=args.topn
     ).run()
