@@ -26,12 +26,13 @@ class FrameStream():
     frame_counter = 0
 
     def __init__(self, filename, printdig=False,
-                 stats=False, topn=20, srcip=''):
+                 stats=False, topn=20, srcip='', dstip=''):
         self.filename = filename
         self.printdig = printdig
         self.stats = stats
         self.topn = topn
         self.srcip = srcip
+        self.dstip = dstip
 
     def run(self):
         fh = open(self.filename, "rb")
@@ -61,9 +62,11 @@ class FrameStream():
         dnstap = dnstap_pb2.Dnstap()
         dnstap.ParseFromString(contents)
         srcip = socket.inet_ntoa(dnstap.message.query_address)
+        dstip = socket.inet_ntoa(dnstap.message.response_address)
         if self.srcip and self.srcip != srcip:
             return
-        dstip = socket.inet_ntoa(dnstap.message.response_address)
+        if self.dstip and self.dstip != dstip:
+            return
         sport = dnstap.message.query_port
         dport = dnstap.message.response_port
 
@@ -159,9 +162,14 @@ if __name__ == '__main__':
         '--srcip', default='',
         help='Match specific source IP address'
     )
+    parser.add_argument(
+        '--dstip', default='',
+        help='Match specific destination IP address'
+    )
     args = parser.parse_args()
 
     FrameStream(
         args.filename, printdig=args.print,
-        stats=args.stats, srcip=args.srcip, topn=args.topn
+        stats=args.stats, srcip=args.srcip, dstip=args.dstip,
+        topn=args.topn
     ).run()
