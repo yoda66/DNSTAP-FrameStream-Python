@@ -62,7 +62,6 @@ class FrameStream():
                 sys.stderr.write('\r\n[-] Keyboard Interrupt with CTRL-C\r\n')
                 break
             except Exception as e:
-                sys.stderr.write('\r\n[-] Completed Reading: {}\r\n'.format(e))
                 break
         fh.close()
         if self.frame_counter and self.stats:
@@ -154,14 +153,25 @@ class FrameStream():
 
 if __name__ == '__main__':
     banner = '''
-[*] ===================================================
-[*]  Parse-FrameStream.py, Version {}
-[*]  Author: {}, {}
-[*]  {}
-[*] ===================================================
+===================================================
+  Parse-FrameStream.py, Version {}
+  Author: {}, {}
+  {}
+===================================================
+
 '''.format(__version__, __author__, __copyright__, __company__)
-    sys.stderr.write(banner)
-    parser = argparse.ArgumentParser()
+
+    class MyArgumentParser(argparse.ArgumentParser):
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+
+        def error(self, message):
+            sys.stderr.write(banner)
+            self.print_help(sys.stderr)
+            self.exit(2, '%s: error: %s\n' % (self.prog, message))
+
+    parser = MyArgumentParser(add_help=False)
     parser.add_argument('filename', help='DNSTAP Frame Stream Log')
     parser.add_argument(
         '-p', '--print', action='store_true',
@@ -183,6 +193,7 @@ if __name__ == '__main__':
         '--dstip', default='',
         help='Match specific destination IP address'
     )
+
     args = parser.parse_args()
 
     FrameStream(
