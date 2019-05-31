@@ -17,4 +17,25 @@ is compiled alongside BIND, and other name servers.
 
 ##Usage
 
+    [*] ===================================================
+    [*]  Parse-FrameStream.py, Version 0.0.1
+    [*]  Author: Joff Thyer, Copyright (c) 2019
+    [*]  Black Hills Information Security
+    [*] ===================================================
+    usage: parse_framestream.py [-h] [-p] [-s] [--topn TOPN] [--srcip SRCIP]
+                            [--dstip DSTIP]
+                            filename
+
+    positional arguments:
+     filename       DNSTAP Frame Stream Log
+
+    optional arguments:
+       -h, --help     show this help message and exit
+       -p, --print    Print out DNS Query Message
+       -s, --stats    Print out DNS Query Message
+       --topn TOPN    Top number of domains in stats
+       --srcip SRCIP  Match specific source IP address
+       --dstip DSTIP  Match specific destination IP address
+
+
 
