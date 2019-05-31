@@ -15,7 +15,7 @@ The basic architecture is as follows:
 In many ways, this script works similarly to the *dnstap-read* binary which
 is compiled alongside BIND, and other name servers. 
 
-If you would like to contact me, reach out on the Twitters to @joff_thyer, or email to <joff at blackhillsinfosec.com>.
+If you would like to contact me, reach out on the Twitters to @joff_thyer, or email to joff@blackhillsinfosec.com.
 
 ## Usage
 
