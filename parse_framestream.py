@@ -179,7 +179,7 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '-s', '--stats', action='store_true',
-        default=False, help='Print out DNS Query Message'
+        default=False, help='Show basic statistics'
     )
     parser.add_argument(
         '--topn', default=10,
