@@ -1,4 +1,4 @@
-#Parse-FrameStream.py
+##Parse-FrameStream.py
 
 This project is a Python3 based script which defines a class
 called FrameStream() used to read and parse a log file produced
@@ -14,5 +14,7 @@ The basic architecture is as follows:
 
 In many ways, this script works similarly to the *dnstap-read* binary which
 is compiled alongside BIND, and other name servers. 
+
+##Usage
 
 

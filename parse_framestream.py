@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import struct
 import socket
 import argparse
@@ -11,6 +12,7 @@ from datetime import datetime
 
 __author__ = 'Joff Thyer'
 __copyright__ = 'Copyright (c) 2019'
+__company__ = 'Black Hills Information Security'
 __license__ = 'MIT'
 __version__ = '0.0.1'
 __maintainer__ = 'Joff Thyer'
@@ -57,10 +59,10 @@ class FrameStream():
                 contents = fh.read(framelen)
                 self.process_frame(contents)
             except KeyboardInterrupt:
-                print('\r\n[-] Keyboard Interrupt with CTRL-C')
+                sys.stderr.write('\r\n[-] Keyboard Interrupt with CTRL-C\r\n')
                 break
             except Exception as e:
-                print('\r\n[-] Completed Reading: {}'.format(e))
+                sys.stderr.write('\r\n[-] Completed Reading: {}\r\n'.format(e))
                 break
         fh.close()
         if self.frame_counter and self.stats:
@@ -109,7 +111,7 @@ class FrameStream():
 
         if self.stats:
             spin = random.choice('|/-/\\')
-            print('\r[*] Processing: [{}]\x1b[2D'.format(spin), end='')
+            sys.stderr.write('\r[*] Processing: [{}]\x1b[2D'.format(spin))
         else:
             print(
                 '{}.{} {} {}:{} {} {}:{} {}:{} {} {}'.format(
@@ -120,9 +122,9 @@ class FrameStream():
                     rr.header.id, rr_summary[:-1]
                 )
             )
-        if self.printdig:
-            print(rr)
-            print('\r\n')
+            if self.printdig:
+                print(rr)
+                print('\r\n')
         self.frame_counter += 1
 
     def print_stats(self):
@@ -151,6 +153,14 @@ class FrameStream():
 
 
 if __name__ == '__main__':
+    banner = '''
+[*] ===================================================
+[*]  Parse-FrameStream.py, Version {}
+[*]  Author: {}, {}
+[*]  {}
+[*] ===================================================
+'''.format(__version__, __author__, __copyright__, __company__)
+    sys.stderr.write(banner)
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', help='DNSTAP Frame Stream Log')
     parser.add_argument(
