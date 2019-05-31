@@ -17,11 +17,12 @@ is compiled alongside BIND, and other name servers.
 
 ## Usage
 
-    [*] ===================================================
-    [*]  Parse-FrameStream.py, Version 0.0.1
-    [*]  Author: Joff Thyer, Copyright (c) 2019
-    [*]  Black Hills Information Security
-    [*] ===================================================
+    ===================================================
+      Parse-FrameStream.py, Version 0.0.1
+      Author: Joff Thyer, Copyright (c) 2019
+      Black Hills Information Security
+    ===================================================
+
     usage: parse_framestream.py [-h] [-p] [-s] [--topn TOPN] [--srcip SRCIP]
                             [--dstip DSTIP]
                             filename
@@ -51,10 +52,9 @@ is compiled alongside BIND, and other name servers.
     2019-05-30 11:15:42.3 CQ 172.18.127.163:39747 -> 172.18.127.161:0 IPv4:UDP 26433 api.snapcraft.io./IN/A
 
 
-$ ./parse_framestream.py --srcip 199.101.127.163 -s dnstap.log
+$ ./parse_framestream.py --srcip 172.18.127.163 -s dnstap.log
 
     [*] Processing: [|]
-
      First Data Frame Timestamp ...: 2019-05-30 10:41:20
      Last Data Frame Timestamp ....: 2019-05-30 14:13:06
      Total elapsed time ...........: 3:31:46
