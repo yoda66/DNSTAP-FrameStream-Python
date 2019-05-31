@@ -37,5 +37,41 @@ is compiled alongside BIND, and other name servers.
        --srcip SRCIP  Match specific source IP address
        --dstip DSTIP  Match specific destination IP address
 
+## Examples
+
+    $ ./parse_framestream.py --srcip 172.18.127.163 dnstap.log
+    2019-05-30 10:41:20.325 CQ 172.18.127.163:33135 -> 172.18.127.161:0 IPv4:UDP 38310 213.216.234.185.in-addr.arpa./IN/PTR
+    2019-05-30 10:41:21.494 CR 172.18.127.163:33135 <- 172.18.127.161:0 IPv4:UDP 38310 213.216.234.185.in-addr.arpa./IN/PTR
+    2019-05-30 10:41:21.230 CQ 172.18.127.163:33135 -> 172.18.127.161:0 IPv4:UDP 38310 213.216.234.185.in-addr.arpa./IN/PTR
+    2019-05-30 10:41:21.494 CQ 172.18.127.163:33135 -> 172.18.127.161:0 IPv4:UDP 38310 213.216.234.185.in-addr.arpa./IN/PTR
+    2019-05-30 10:41:21.495 CR 172.18.127.163:33135 <- 172.18.127.161:0 IPv4:UDP 38310 213.216.234.185.in-addr.arpa./IN/PTR
+    2019-05-30 11:15:42.24 CR 172.18.127.163:55938 <- 172.18.127.161:0 IPv4:UDP 29748 api.snapcraft.io./IN/AAAA
+    2019-05-30 11:15:42.26 CR 172.18.127.163:39747 <- 172.18.127.161:0 IPv4:UDP 26433 api.snapcraft.io./IN/A
+    2019-05-30 11:15:42.3 CQ 172.18.127.163:55938 -> 172.18.127.161:0 IPv4:UDP 29748 api.snapcraft.io./IN/AAAA
+    2019-05-30 11:15:42.3 CQ 172.18.127.163:39747 -> 172.18.127.161:0 IPv4:UDP 26433 api.snapcraft.io./IN/A
 
 
+$ ./parse_framestream.py --srcip 199.101.127.163 -s dnstap.log
+
+    [*] Processing: [|]
+
+     First Data Frame Timestamp ...: 2019-05-30 10:41:20
+     Last Data Frame Timestamp ....: 2019-05-30 14:13:06
+     Total elapsed time ...........: 3:31:46
+
+     DNS Query Type Stats
+     ------------------------
+            PTR:       15
+              A:        3
+           AAAA:        1
+     ------------------------
+
+     10 Most Common Domains Queried
+     --------------------------------------------
+      213.216.234.185.in-addr.arpa.:        8
+       99.209.222.185.in-addr.arpa.:        4
+                  api.snapcraft.io.:        2
+          50.39.13.45.in-addr.arpa.:        2
+         zg-0326a-2.stretchoid.com.:        2
+      241.226.241.192.in-addr.arpa.:        1
+     --------------------------------------------
