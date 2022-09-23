@@ -1,2 +1,2 @@
-protobuf==3.8.0
+protobuf==3.18.3
 dnslib==0.9.10
