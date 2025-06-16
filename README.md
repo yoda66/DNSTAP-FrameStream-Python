@@ -54,7 +54,7 @@ If you would like to contact me, reach out on the Twitters to @joff_thyer, or em
     2019-05-30 11:15:42.3 CQ 172.18.127.163:39747 -> 172.18.127.161:0 IPv4:UDP 26433 api.snapcraft.io./IN/A
 
 
-$ ./parse_framestream.py --srcip 172.18.127.163 -s dnstap.log
+    $ ./parse_framestream.py --srcip 172.18.127.163 -s dnstap.log
 
     [*] Processing: [|]
      First Data Frame Timestamp ...: 2019-05-30 10:41:20
@@ -77,3 +77,12 @@ $ ./parse_framestream.py --srcip 172.18.127.163 -s dnstap.log
          zg-0326a-2.stretchoid.com.:        2
       241.226.241.192.in-addr.arpa.:        1
      --------------------------------------------
+
+## Protobuf
+
+* dnstap.proto is the protocol specification file.
+* dnstap_pb2.py is generated using the **protoc** command as follows:
+
+    $ protoc --python_out=. dnstap.proto
+
+
